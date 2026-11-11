@@ -1,0 +1,248 @@
+{
+  "generado": "2026-11-11T00:37:10",
+  "datos": {
+    "reacciones_duplicadas": {
+      "coleccion": "reacciones",
+      "descripcion": "Misma reacción repetida: mismo usuario + misma publicación",
+      "casos": 0,
+      "ejemplos": []
+    },
+    "campanas_nombre_repetido": {
+      "coleccion": "campanas",
+      "descripcion": "Nombres de campaña repetidos (distinto _id)",
+      "casos": 91,
+      "ejemplos": [
+        {
+          "_id": "Campaña Realize",
+          "n": 3,
+          "ids": [
+            "camp_148",
+            "camp_219",
+            "camp_495"
+          ]
+        },
+        {
+          "_id": "Campaña Culture",
+          "n": 3,
+          "ids": [
+            "camp_211",
+            "camp_317",
+            "camp_449"
+          ]
+        },
+        {
+          "_id": "Campaña Lead",
+          "n": 2,
+          "ids": [
+            "camp_266",
+            "camp_290"
+          ]
+        }
+      ]
+    },
+    "publicaciones_autor_inexistente": {
+      "coleccion": "publicaciones",
+      "descripcion": "publicaciones.usuario_id no existe en usuarios",
+      "casos": 0,
+      "ejemplos": []
+    },
+    "reacciones_usuario_inexistente": {
+      "coleccion": "reacciones",
+      "descripcion": "reacciones.usuario_id no existe en usuarios",
+      "casos": 0,
+      "ejemplos": []
+    },
+    "reacciones_publicacion_inexistente": {
+      "coleccion": "reacciones",
+      "descripcion": "reacciones.publicacion_id no existe en publicaciones",
+      "casos": 0,
+      "ejemplos": []
+    },
+    "comentarios_usuario_inexistente": {
+      "coleccion": "comentarios",
+      "descripcion": "comentarios.usuario_id no existe en usuarios",
+      "casos": 0,
+      "ejemplos": []
+    },
+    "comentarios_publicacion_inexistente": {
+      "coleccion": "comentarios",
+      "descripcion": "comentarios.publicacion_id no existe en publicaciones",
+      "casos": 0,
+      "ejemplos": []
+    },
+    "campanas_publicacion_inexistente": {
+      "coleccion": "campanas",
+      "descripcion": "campanas.publicaciones_asociadas contiene ids que no existen",
+      "casos": 0,
+      "ejemplos": []
+    },
+    "reacciones_antes_de_publicacion": {
+      "coleccion": "reacciones",
+      "descripcion": "Reacción con fecha anterior a la publicación reaccionada",
+      "casos": 245,
+      "ejemplos": [
+        {
+          "_id": "react_1",
+          "publicacion_id": "pub_201",
+          "fecha": "2025-04-18 22:46:33",
+          "fecha_publicacion": "2025-07-07 01:43:00"
+        },
+        {
+          "_id": "react_2",
+          "publicacion_id": "pub_410",
+          "fecha": "2025-03-13 20:00:30",
+          "fecha_publicacion": "2025-06-25 11:12:37"
+        },
+        {
+          "_id": "react_3",
+          "publicacion_id": "pub_214",
+          "fecha": "2025-03-01 04:43:46",
+          "fecha_publicacion": "2025-06-12 00:33:28"
+        }
+      ]
+    },
+    "comentarios_antes_de_publicacion": {
+      "coleccion": "comentarios",
+      "descripcion": "Comentario con fecha anterior a la publicación comentada",
+      "casos": 251,
+      "ejemplos": [
+        {
+          "_id": "comm_3",
+          "publicacion_id": "pub_387",
+          "fecha": "2025-01-17 11:55:28",
+          "fecha_publicacion": "2025-01-19 20:46:19"
+        },
+        {
+          "_id": "comm_7",
+          "publicacion_id": "pub_162",
+          "fecha": "2025-06-02 19:12:51",
+          "fecha_publicacion": "2025-07-01 07:13:38"
+        },
+        {
+          "_id": "comm_9",
+          "publicacion_id": "pub_453",
+          "fecha": "2025-03-28 07:39:49",
+          "fecha_publicacion": "2025-05-02 01:37:56"
+        }
+      ]
+    },
+    "publicaciones_antes_de_registro": {
+      "coleccion": "publicaciones",
+      "descripcion": "Publicación con fecha anterior al registro de su autor",
+      "casos": 48,
+      "ejemplos": [
+        {
+          "_id": "pub_3",
+          "usuario_id": "user_94",
+          "fecha_publicacion": "2025-02-13 21:59:28",
+          "fecha_registro": "2025-05-01 20:49:22"
+        },
+        {
+          "_id": "pub_17",
+          "usuario_id": "user_92",
+          "fecha_publicacion": "2025-04-07 00:21:16",
+          "fecha_registro": "2025-06-14 20:28:06"
+        },
+        {
+          "_id": "pub_44",
+          "usuario_id": "user_94",
+          "fecha_publicacion": "2025-03-30 13:45:05",
+          "fecha_registro": "2025-05-01 20:49:22"
+        }
+      ]
+    },
+    "reacciones_antes_de_registro": {
+      "coleccion": "reacciones",
+      "descripcion": "Reacción con fecha anterior al registro del usuario",
+      "casos": 53,
+      "ejemplos": [
+        {
+          "_id": "react_5",
+          "usuario_id": "user_235",
+          "fecha": "2025-01-20 12:15:22",
+          "fecha_registro": "2025-03-24 03:43:20"
+        },
+        {
+          "_id": "react_15",
+          "usuario_id": "user_336",
+          "fecha": "2025-02-09 02:28:12",
+          "fecha_registro": "2025-06-01 20:13:08"
+        },
+        {
+          "_id": "react_16",
+          "usuario_id": "user_336",
+          "fecha": "2025-02-24 15:34:46",
+          "fecha_registro": "2025-06-01 20:13:08"
+        }
+      ]
+    },
+    "campanas_fin_antes_de_inicio": {
+      "coleccion": "campanas",
+      "descripcion": "Campaña con fecha_fin anterior a fecha_inicio",
+      "casos": 0,
+      "ejemplos": []
+    },
+    "autoreacciones": {
+      "coleccion": "reacciones",
+      "descripcion": "El autor reacciona a su propia publicación",
+      "casos": 1,
+      "ejemplos": [
+        {
+          "_id": "react_159",
+          "usuario_id": "user_429",
+          "publicacion_id": "pub_136"
+        }
+      ]
+    },
+    "autocomentarios": {
+      "coleccion": "comentarios",
+      "descripcion": "El autor comenta su propia publicación",
+      "casos": 1,
+      "ejemplos": [
+        {
+          "_id": "comm_457",
+          "usuario_id": "user_499",
+          "publicacion_id": "pub_286"
+        }
+      ]
+    },
+    "publicaciones_sin_campana": {
+      "coleccion": "publicaciones",
+      "descripcion": "Publicaciones que no pertenecen a ninguna campaña",
+      "casos": 22,
+      "ejemplos": [
+        {
+          "_id": "pub_24",
+          "usuario_id": "user_56"
+        },
+        {
+          "_id": "pub_40",
+          "usuario_id": "user_379"
+        },
+        {
+          "_id": "pub_75",
+          "usuario_id": "user_258"
+        }
+      ]
+    },
+    "usuarios_sin_actividad": {
+      "coleccion": "usuarios",
+      "descripcion": "Usuarios sin publicaciones, reacciones ni comentarios",
+      "casos": 31,
+      "ejemplos": [
+        {
+          "_id": "user_23",
+          "nombre": "James Grant"
+        },
+        {
+          "_id": "user_26",
+          "nombre": "Erika Rowe"
+        },
+        {
+          "_id": "user_33",
+          "nombre": "Matthew Morgan"
+        }
+      ]
+    }
+  }
+}

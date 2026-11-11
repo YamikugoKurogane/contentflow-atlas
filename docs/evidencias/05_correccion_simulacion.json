@@ -1,0 +1,18 @@
+{
+  "generado": "2026-11-11T00:36:42",
+  "datos": {
+    "modo": "SIMULACIÓN (dry-run)",
+    "reacciones_duplicadas": {
+      "grupos": 1,
+      "ids_a_eliminar": [
+        "react_65"
+      ]
+    },
+    "temporales": {
+      "reacciones_antes_de_publicacion": 245,
+      "comentarios_antes_de_publicacion": 251,
+      "publicaciones_antes_de_registro": 48,
+      "reacciones_antes_de_registro": 53
+    }
+  }
+}

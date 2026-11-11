@@ -1,0 +1,30 @@
+{
+  "generado": "2026-11-11T00:36:09",
+  "datos": {
+    "usuarios": {
+      "archivo": 500,
+      "coleccion": 500,
+      "coincide": true
+    },
+    "publicaciones": {
+      "archivo": 500,
+      "coleccion": 500,
+      "coincide": true
+    },
+    "reacciones": {
+      "archivo": 500,
+      "coleccion": 500,
+      "coincide": true
+    },
+    "comentarios": {
+      "archivo": 500,
+      "coleccion": 500,
+      "coincide": true
+    },
+    "campanas": {
+      "archivo": 500,
+      "coleccion": 500,
+      "coincide": true
+    }
+  }
+}

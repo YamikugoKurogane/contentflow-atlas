@@ -1,0 +1,59 @@
+{
+  "generado": "2026-11-11T00:36:17",
+  "datos": {
+    "usuarios.fecha_registro": {
+      "tipos_antes": {
+        "string": 500
+      },
+      "modificados": 500,
+      "tipos_despues": {
+        "date": 500
+      }
+    },
+    "publicaciones.fecha_publicacion": {
+      "tipos_antes": {
+        "string": 500
+      },
+      "modificados": 500,
+      "tipos_despues": {
+        "date": 500
+      }
+    },
+    "reacciones.fecha": {
+      "tipos_antes": {
+        "string": 500
+      },
+      "modificados": 500,
+      "tipos_despues": {
+        "date": 500
+      }
+    },
+    "comentarios.fecha": {
+      "tipos_antes": {
+        "string": 500
+      },
+      "modificados": 500,
+      "tipos_despues": {
+        "date": 500
+      }
+    },
+    "campanas.fecha_inicio": {
+      "tipos_antes": {
+        "string": 500
+      },
+      "modificados": 500,
+      "tipos_despues": {
+        "date": 500
+      }
+    },
+    "campanas.fecha_fin": {
+      "tipos_antes": {
+        "string": 500
+      },
+      "modificados": 500,
+      "tipos_despues": {
+        "date": 500
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "6af3e2d69a664c4b8f6b1625"
+  },
+  "coleccion": "reacciones",
+  "motivo": "duplicado usuario+publicacion",
+  "documento": {
+    "_id": "react_65",
+    "usuario_id": "user_473",
+    "publicacion_id": "pub_425",
+    "tipo_reaccion": "Me enoja",
+    "fecha": {
+      "$date": "2025-05-02T23:41:27.000Z"
+    }
+  },
+  "fecha_correccion": {
+    "$date": "2026-11-11T03:36:54.881Z"
+  }
+}]
