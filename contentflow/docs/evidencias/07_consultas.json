@@ -1,0 +1,734 @@
+{
+  "generado": "2026-11-12T01:13:15",
+  "datos": {
+    "F1": {
+      "tipo": "find",
+      "coleccion": "publicaciones",
+      "requisito": "Diseño de contenido: ¿cuáles son los videos de Deportes más recientes?",
+      "consulta": {
+        "filtro": "{'categoria': 'Deportes', 'tipo': 'Video'}",
+        "proyeccion": "{'contenido': 1, 'hashtags': 1, 'fecha_publicacion': 1}",
+        "orden": "[('fecha_publicacion', -1)]",
+        "limite": "5"
+      },
+      "resultados": [
+        {
+          "_id": "pub_338",
+          "contenido": "By sea professional tough generation. Weight development act treat serve yourself.",
+          "fecha_publicacion": "2025-07-06 10:50:35",
+          "hashtags": [
+            "#cultura"
+          ]
+        },
+        {
+          "_id": "pub_468",
+          "contenido": "Off he dog any peace. Court economic present these. Half seat attorney wind mind. Section agreement age heavy admit catch.",
+          "fecha_publicacion": "2025-07-06 06:13:36",
+          "hashtags": [
+            "#innovacion",
+            "#series",
+            "#cultura"
+          ]
+        },
+        {
+          "_id": "pub_40",
+          "contenido": "Pretty affect discussion late often. Scientist push price sit music agreement need. Represent today notice exactly send where.",
+          "fecha_publicacion": "2025-06-27 17:00:29",
+          "hashtags": [
+            "#futbol"
+          ]
+        },
+        {
+          "_id": "pub_250",
+          "contenido": "Attack eat top rock sit. Weight husband about company interest same. Nearly member happen.",
+          "fecha_publicacion": "2025-06-21 15:14:32",
+          "hashtags": [
+            "#innovacion",
+            "#cultura",
+            "#series"
+          ]
+        },
+        {
+          "_id": "pub_310",
+          "contenido": "Economy quality today particular property risk others. Baby ground officer brother.\nStand law reason. Really surface across service those.",
+          "fecha_publicacion": "2025-06-19 08:28:20",
+          "hashtags": [
+            "#innovacion"
+          ]
+        }
+      ]
+    },
+    "F2": {
+      "tipo": "find",
+      "coleccion": "usuarios",
+      "requisito": "Perfil de audiencia: usuarios de móvil o tablet registrados desde 2025 (operadores $and, $in y $gte).",
+      "consulta": {
+        "filtro": "{'$and': [{'dispositivo': {'$in': ['Móvil', 'Tablet']}}, {'fecha_registro': {'$gte': datetime.datetime(2025, 1, 1, 0, 0)}}]}",
+        "proyeccion": "{'nombre': 1, 'pais': 1, 'dispositivo': 1, 'fecha_registro': 1, '_id': 0}",
+        "orden": "[('fecha_registro', 1)]",
+        "limite": "5"
+      },
+      "resultados": [
+        {
+          "nombre": "Rick Jones",
+          "pais": "Saint Barthelemy",
+          "fecha_registro": "2025-01-06 11:03:04",
+          "dispositivo": "Tablet"
+        },
+        {
+          "nombre": "Austin Tyler",
+          "pais": "San Marino",
+          "fecha_registro": "2025-01-11 11:22:29",
+          "dispositivo": "Móvil"
+        },
+        {
+          "nombre": "Steven Harris",
+          "pais": "Guadeloupe",
+          "fecha_registro": "2025-01-13 03:04:05",
+          "dispositivo": "Tablet"
+        },
+        {
+          "nombre": "Katherine Coleman",
+          "pais": "Guam",
+          "fecha_registro": "2025-01-13 16:07:39",
+          "dispositivo": "Móvil"
+        },
+        {
+          "nombre": "Valerie English",
+          "pais": "El Salvador",
+          "fecha_registro": "2025-01-16 19:23:16",
+          "dispositivo": "Móvil"
+        }
+      ]
+    },
+    "F3": {
+      "tipo": "find",
+      "coleccion": "comentarios",
+      "requisito": "Contenido popular: comentarios con 80 o más likes, ordenados de mayor a menor.",
+      "consulta": {
+        "filtro": "{'likes': {'$gte': 80}}",
+        "proyeccion": "{'comentario': 1, 'likes': 1, 'publicacion_id': 1}",
+        "orden": "[('likes', -1), ('_id', 1)]",
+        "limite": "5"
+      },
+      "resultados": [
+        {
+          "_id": "comm_321",
+          "publicacion_id": "pub_383",
+          "comentario": "Born property blood sport good race health.",
+          "likes": 100
+        },
+        {
+          "_id": "comm_345",
+          "publicacion_id": "pub_452",
+          "comentario": "Wide you seek recent.",
+          "likes": 100
+        },
+        {
+          "_id": "comm_435",
+          "publicacion_id": "pub_35",
+          "comentario": "Player explain bring argue anything.",
+          "likes": 100
+        },
+        {
+          "_id": "comm_59",
+          "publicacion_id": "pub_171",
+          "comentario": "Institution prevent each writer anyone child.",
+          "likes": 100
+        },
+        {
+          "_id": "comm_115",
+          "publicacion_id": "pub_191",
+          "comentario": "Majority major pick plan mean teacher chair.",
+          "likes": 99
+        }
+      ]
+    },
+    "F4": {
+      "tipo": "find",
+      "coleccion": "publicaciones",
+      "requisito": "Búsqueda compuesta: publicaciones con #futbol o #series que no sean de tipo Texto y no estén marcadas como inconsistentes ($or, $ne).",
+      "consulta": {
+        "filtro": "{'$or': [{'hashtags': '#futbol'}, {'hashtags': '#series'}], 'tipo': {'$ne': 'Texto'}, 'inconsistencia_temporal': {'$ne': True}}",
+        "proyeccion": "{'categoria': 1, 'tipo': 1, 'hashtags': 1}",
+        "orden": "[('_id', 1)]",
+        "limite": "5"
+      },
+      "resultados": [
+        {
+          "_id": "pub_1",
+          "categoria": "Deportes",
+          "hashtags": [
+            "#series",
+            "#cultura"
+          ],
+          "tipo": "Video"
+        },
+        {
+          "_id": "pub_10",
+          "categoria": "Tecnología",
+          "hashtags": [
+            "#futbol"
+          ],
+          "tipo": "Imagen"
+        },
+        {
+          "_id": "pub_100",
+          "categoria": "Entretenimiento",
+          "hashtags": [
+            "#aprendizaje",
+            "#innovacion",
+            "#futbol"
+          ],
+          "tipo": "Video"
+        },
+        {
+          "_id": "pub_101",
+          "categoria": "Cultura",
+          "hashtags": [
+            "#series",
+            "#innovacion",
+            "#futbol"
+          ],
+          "tipo": "Video"
+        },
+        {
+          "_id": "pub_102",
+          "categoria": "Educación",
+          "hashtags": [
+            "#series",
+            "#aprendizaje",
+            "#innovacion"
+          ],
+          "tipo": "Imagen"
+        }
+      ]
+    },
+    "F5": {
+      "tipo": "find",
+      "coleccion": "campanas",
+      "requisito": "Éxito de campañas: campañas vigentes el 1 de mayo de 2025 (comparación de fechas Date).",
+      "consulta": {
+        "filtro": "{'fecha_inicio': {'$lte': datetime.datetime(2025, 5, 1, 0, 0)}, 'fecha_fin': {'$gte': datetime.datetime(2025, 5, 1, 0, 0)}}",
+        "proyeccion": "{'nombre': 1, 'objetivo': 1, 'fecha_inicio': 1, 'fecha_fin': 1}",
+        "orden": "[('fecha_inicio', 1)]",
+        "limite": "5"
+      },
+      "resultados": [
+        {
+          "_id": "camp_255",
+          "nombre": "Campaña Beat",
+          "fecha_inicio": "2024-07-16 00:21:24",
+          "fecha_fin": "2025-05-05 14:53:40",
+          "objetivo": "Captar nuevos usuarios"
+        },
+        {
+          "_id": "camp_254",
+          "nombre": "Campaña Expert",
+          "fecha_inicio": "2024-07-16 04:39:17",
+          "fecha_fin": "2025-07-01 06:09:22",
+          "objetivo": "Aumentar engagement"
+        },
+        {
+          "_id": "camp_375",
+          "nombre": "Campaña Common",
+          "fecha_inicio": "2024-07-16 09:12:33",
+          "fecha_fin": "2025-05-27 08:31:28",
+          "objetivo": "Promover contenido"
+        },
+        {
+          "_id": "camp_150",
+          "nombre": "Campaña Claim",
+          "fecha_inicio": "2024-07-16 21:52:01",
+          "fecha_fin": "2025-07-01 06:50:27",
+          "objetivo": "Aumentar engagement"
+        },
+        {
+          "_id": "camp_29",
+          "nombre": "Campaña Close",
+          "fecha_inicio": "2024-07-17 06:33:03",
+          "fecha_fin": "2025-06-19 09:53:48",
+          "objetivo": "Promover contenido"
+        }
+      ]
+    },
+    "A1": {
+      "tipo": "aggregate",
+      "coleccion": "usuarios",
+      "requisito": "Usuarios más activos: publicaciones + reacciones + comentarios por usuario ($lookup, $size, $sort).",
+      "consulta": {
+        "pipeline": "[{'$lookup': {'from': 'publicaciones', 'localField': '_id', 'foreignField': 'usuario_id', 'as': 'pubs'}}, {'$lookup': {'from': 'reacciones', 'localField': '_id', 'foreignField': 'usuario_id', 'as': 'reacs'}}, {'$lookup': {'from': 'comentarios', 'localField': '_id', 'foreignField': 'usuario_id', 'as': 'coms'}}, {'$project': {'nombre': 1, 'pais': 1, 'publicaciones': {'$size': '$pubs'}, 'reacciones': {'$size': '$reacs'}, 'comentarios': {'$size': '$coms'}}}, {'$addFields': {'actividad_total': {'$add': ['$publicaciones', '$reacciones', '$comentarios']}}}, {'$sort': {'actividad_total': -1, '_id': 1}}, {'$limit': 10}]"
+      },
+      "resultados": [
+        {
+          "_id": "user_311",
+          "nombre": "Michael Bass",
+          "pais": "Botswana",
+          "publicaciones": 3,
+          "reacciones": 6,
+          "comentarios": 1,
+          "actividad_total": 10
+        },
+        {
+          "_id": "user_205",
+          "nombre": "Kathleen Jones",
+          "pais": "Fiji",
+          "publicaciones": 4,
+          "reacciones": 2,
+          "comentarios": 3,
+          "actividad_total": 9
+        },
+        {
+          "_id": "user_73",
+          "nombre": "Felicia Jensen",
+          "pais": "Cook Islands",
+          "publicaciones": 4,
+          "reacciones": 3,
+          "comentarios": 2,
+          "actividad_total": 9
+        },
+        {
+          "_id": "user_141",
+          "nombre": "Jill Rowland",
+          "pais": "Korea",
+          "publicaciones": 2,
+          "reacciones": 3,
+          "comentarios": 3,
+          "actividad_total": 8
+        },
+        {
+          "_id": "user_300",
+          "nombre": "Tammy Weeks",
+          "pais": "Sierra Leone",
+          "publicaciones": 2,
+          "reacciones": 2,
+          "comentarios": 4,
+          "actividad_total": 8
+        },
+        {
+          "_id": "user_359",
+          "nombre": "Misty Meyer",
+          "pais": "Saudi Arabia",
+          "publicaciones": 4,
+          "reacciones": 2,
+          "comentarios": 2,
+          "actividad_total": 8
+        },
+        {
+          "_id": "user_473",
+          "nombre": "Jessica Hanson",
+          "pais": "Guinea-Bissau",
+          "publicaciones": 1,
+          "reacciones": 4,
+          "comentarios": 3,
+          "actividad_total": 8
+        },
+        {
+          "_id": "user_66",
+          "nombre": "Nathaniel Hill",
+          "pais": "American Samoa",
+          "publicaciones": 2,
+          "reacciones": 4,
+          "comentarios": 2,
+          "actividad_total": 8
+        },
+        {
+          "_id": "user_206",
+          "nombre": "Matthew Hatfield",
+          "pais": "Timor-Leste",
+          "publicaciones": 3,
+          "reacciones": 0,
+          "comentarios": 4,
+          "actividad_total": 7
+        },
+        {
+          "_id": "user_218",
+          "nombre": "Veronica Nelson",
+          "pais": "Dominican Republic",
+          "publicaciones": 2,
+          "reacciones": 3,
+          "comentarios": 2,
+          "actividad_total": 7
+        }
+      ]
+    },
+    "A2": {
+      "tipo": "aggregate",
+      "coleccion": "publicaciones",
+      "requisito": "Contenidos más populares: popularidad = reacciones + comentarios por publicación.",
+      "consulta": {
+        "pipeline": "[{'$lookup': {'from': 'reacciones', 'localField': '_id', 'foreignField': 'publicacion_id', 'as': 'r'}}, {'$lookup': {'from': 'comentarios', 'localField': '_id', 'foreignField': 'publicacion_id', 'as': 'c'}}, {'$project': {'categoria': 1, 'tipo': 1, 'usuario_id': 1, 'reacciones': {'$size': '$r'}, 'comentarios': {'$size': '$c'}}}, {'$addFields': {'popularidad': {'$add': ['$reacciones', '$comentarios']}}}, {'$sort': {'popularidad': -1, '_id': 1}}, {'$limit': 10}]"
+      },
+      "resultados": [
+        {
+          "_id": "pub_237",
+          "usuario_id": "user_113",
+          "categoria": "Deportes",
+          "tipo": "Imagen",
+          "reacciones": 3,
+          "comentarios": 5,
+          "popularidad": 8
+        },
+        {
+          "_id": "pub_312",
+          "usuario_id": "user_364",
+          "categoria": "Educación",
+          "tipo": "Video",
+          "reacciones": 4,
+          "comentarios": 3,
+          "popularidad": 7
+        },
+        {
+          "_id": "pub_50",
+          "usuario_id": "user_230",
+          "categoria": "Cultura",
+          "tipo": "Video",
+          "reacciones": 4,
+          "comentarios": 3,
+          "popularidad": 7
+        },
+        {
+          "_id": "pub_134",
+          "usuario_id": "user_167",
+          "categoria": "Tecnología",
+          "tipo": "Texto",
+          "reacciones": 1,
+          "comentarios": 5,
+          "popularidad": 6
+        },
+        {
+          "_id": "pub_358",
+          "usuario_id": "user_345",
+          "categoria": "Cultura",
+          "tipo": "Imagen",
+          "reacciones": 4,
+          "comentarios": 2,
+          "popularidad": 6
+        },
+        {
+          "_id": "pub_381",
+          "usuario_id": "user_380",
+          "categoria": "Deportes",
+          "tipo": "Texto",
+          "reacciones": 1,
+          "comentarios": 5,
+          "popularidad": 6
+        },
+        {
+          "_id": "pub_388",
+          "usuario_id": "user_129",
+          "categoria": "Cultura",
+          "tipo": "Video",
+          "reacciones": 4,
+          "comentarios": 2,
+          "popularidad": 6
+        },
+        {
+          "_id": "pub_393",
+          "usuario_id": "user_491",
+          "categoria": "Entretenimiento",
+          "tipo": "Video",
+          "reacciones": 3,
+          "comentarios": 3,
+          "popularidad": 6
+        },
+        {
+          "_id": "pub_41",
+          "usuario_id": "user_330",
+          "categoria": "Tecnología",
+          "tipo": "Imagen",
+          "reacciones": 3,
+          "comentarios": 3,
+          "popularidad": 6
+        },
+        {
+          "_id": "pub_158",
+          "usuario_id": "user_270",
+          "categoria": "Deportes",
+          "tipo": "Video",
+          "reacciones": 1,
+          "comentarios": 4,
+          "popularidad": 5
+        }
+      ]
+    },
+    "A3": {
+      "tipo": "aggregate",
+      "coleccion": "publicaciones",
+      "requisito": "Horarios de publicación: promedio de reacciones recibidas según la hora (UTC) de publicación ($hour, $group).",
+      "consulta": {
+        "pipeline": "[{'$lookup': {'from': 'reacciones', 'localField': '_id', 'foreignField': 'publicacion_id', 'as': 'r'}}, {'$project': {'hora': {'$hour': '$fecha_publicacion'}, 'n': {'$size': '$r'}}}, {'$group': {'_id': '$hora', 'publicaciones': {'$sum': 1}, 'reacciones_promedio': {'$avg': '$n'}}}, {'$project': {'publicaciones': 1, 'reacciones_promedio': {'$round': ['$reacciones_promedio', 2]}}}, {'$sort': {'reacciones_promedio': -1, '_id': 1}}, {'$limit': 5}]"
+      },
+      "resultados": [
+        {
+          "_id": 14,
+          "publicaciones": 22,
+          "reacciones_promedio": 1.45
+        },
+        {
+          "_id": 13,
+          "publicaciones": 18,
+          "reacciones_promedio": 1.39
+        },
+        {
+          "_id": 21,
+          "publicaciones": 16,
+          "reacciones_promedio": 1.38
+        },
+        {
+          "_id": 8,
+          "publicaciones": 27,
+          "reacciones_promedio": 1.37
+        },
+        {
+          "_id": 11,
+          "publicaciones": 19,
+          "reacciones_promedio": 1.32
+        }
+      ]
+    },
+    "A4": {
+      "tipo": "aggregate",
+      "coleccion": "publicaciones",
+      "requisito": "Horarios de publicación: promedio de reacciones por día de la semana (1 = domingo) ($dayOfWeek).",
+      "consulta": {
+        "pipeline": "[{'$lookup': {'from': 'reacciones', 'localField': '_id', 'foreignField': 'publicacion_id', 'as': 'r'}}, {'$project': {'dia': {'$dayOfWeek': '$fecha_publicacion'}, 'n': {'$size': '$r'}}}, {'$group': {'_id': '$dia', 'publicaciones': {'$sum': 1}, 'reacciones_promedio': {'$avg': '$n'}}}, {'$project': {'publicaciones': 1, 'reacciones_promedio': {'$round': ['$reacciones_promedio', 2]}}}, {'$sort': {'reacciones_promedio': -1}}]"
+      },
+      "resultados": [
+        {
+          "_id": 4,
+          "publicaciones": 68,
+          "reacciones_promedio": 1.28
+        },
+        {
+          "_id": 5,
+          "publicaciones": 65,
+          "reacciones_promedio": 1.14
+        },
+        {
+          "_id": 2,
+          "publicaciones": 74,
+          "reacciones_promedio": 1.01
+        },
+        {
+          "_id": 7,
+          "publicaciones": 78,
+          "reacciones_promedio": 0.99
+        },
+        {
+          "_id": 1,
+          "publicaciones": 71,
+          "reacciones_promedio": 0.89
+        },
+        {
+          "_id": 6,
+          "publicaciones": 63,
+          "reacciones_promedio": 0.87
+        },
+        {
+          "_id": 3,
+          "publicaciones": 81,
+          "reacciones_promedio": 0.84
+        }
+      ]
+    },
+    "A5": {
+      "tipo": "aggregate",
+      "coleccion": "reacciones",
+      "requisito": "Perfil de audiencia: tipo de reacción predominante según dispositivo del usuario ($lookup, $unwind, $group).",
+      "consulta": {
+        "pipeline": "[{'$lookup': {'from': 'usuarios', 'localField': 'usuario_id', 'foreignField': '_id', 'as': 'u'}}, {'$unwind': '$u'}, {'$group': {'_id': {'dispositivo': '$u.dispositivo', 'reaccion': '$tipo_reaccion'}, 'total': {'$sum': 1}}}, {'$sort': {'_id.dispositivo': 1, 'total': -1}}]"
+      },
+      "resultados": [
+        {
+          "_id": {
+            "dispositivo": "Desktop",
+            "reaccion": "Me entristece"
+          },
+          "total": 42
+        },
+        {
+          "_id": {
+            "dispositivo": "Desktop",
+            "reaccion": "Me gusta"
+          },
+          "total": 41
+        },
+        {
+          "_id": {
+            "dispositivo": "Desktop",
+            "reaccion": "Me encanta"
+          },
+          "total": 36
+        },
+        {
+          "_id": {
+            "dispositivo": "Desktop",
+            "reaccion": "Me enoja"
+          },
+          "total": 35
+        },
+        {
+          "_id": {
+            "dispositivo": "Móvil",
+            "reaccion": "Me entristece"
+          },
+          "total": 55
+        },
+        {
+          "_id": {
+            "dispositivo": "Móvil",
+            "reaccion": "Me enoja"
+          },
+          "total": 55
+        },
+        {
+          "_id": {
+            "dispositivo": "Móvil",
+            "reaccion": "Me gusta"
+          },
+          "total": 41
+        },
+        {
+          "_id": {
+            "dispositivo": "Móvil",
+            "reaccion": "Me encanta"
+          },
+          "total": 40
+        },
+        {
+          "_id": {
+            "dispositivo": "Tablet",
+            "reaccion": "Me entristece"
+          },
+          "total": 43
+        },
+        {
+          "_id": {
+            "dispositivo": "Tablet",
+            "reaccion": "Me gusta"
+          },
+          "total": 42
+        }
+      ]
+    },
+    "A6": {
+      "tipo": "aggregate",
+      "coleccion": "publicaciones",
+      "requisito": "Diseño de contenido: hashtags más usados ($unwind sobre arreglo, $group, $sort).",
+      "consulta": {
+        "pipeline": "[{'$unwind': '$hashtags'}, {'$group': {'_id': '$hashtags', 'usos': {'$sum': 1}}}, {'$sort': {'usos': -1, '_id': 1}}, {'$limit': 10}]"
+      },
+      "resultados": [
+        {
+          "_id": "#cultura",
+          "usos": 221
+        },
+        {
+          "_id": "#aprendizaje",
+          "usos": 214
+        },
+        {
+          "_id": "#innovacion",
+          "usos": 201
+        },
+        {
+          "_id": "#futbol",
+          "usos": 197
+        },
+        {
+          "_id": "#series",
+          "usos": 185
+        }
+      ]
+    },
+    "A7": {
+      "tipo": "aggregate",
+      "coleccion": "campanas",
+      "requisito": "Éxito de campañas: reacciones y comentarios reales frente a la meta (metricas_objetivo) de cada campaña.",
+      "consulta": {
+        "pipeline": "[{'$lookup': {'from': 'reacciones', 'localField': 'publicaciones_asociadas', 'foreignField': 'publicacion_id', 'as': 'r'}}, {'$lookup': {'from': 'comentarios', 'localField': 'publicaciones_asociadas', 'foreignField': 'publicacion_id', 'as': 'c'}}, {'$project': {'nombre': 1, 'objetivo': 1, 'meta_likes': '$metricas_objetivo.likes', 'meta_comentarios': '$metricas_objetivo.comentarios', 'reacciones': {'$size': '$r'}, 'comentarios': {'$size': '$c'}}}, {'$addFields': {'cumplimiento_reacciones_pct': {'$round': [{'$multiply': [{'$divide': ['$reacciones', '$meta_likes']}, 100]}, 1]}}}, {'$sort': {'cumplimiento_reacciones_pct': -1, '_id': 1}}, {'$limit': 5}]"
+      },
+      "resultados": [
+        {
+          "_id": "camp_239",
+          "nombre": "Campaña Represent",
+          "objetivo": "Promover contenido",
+          "meta_likes": 125,
+          "meta_comentarios": 64,
+          "reacciones": 7,
+          "comentarios": 5,
+          "cumplimiento_reacciones_pct": 5.6
+        },
+        {
+          "_id": "camp_246",
+          "nombre": "Campaña Particular",
+          "objetivo": "Captar nuevos usuarios",
+          "meta_likes": 140,
+          "meta_comentarios": 311,
+          "reacciones": 7,
+          "comentarios": 6,
+          "cumplimiento_reacciones_pct": 5.0
+        },
+        {
+          "_id": "camp_25",
+          "nombre": "Campaña Natural",
+          "objetivo": "Aumentar engagement",
+          "meta_likes": 114,
+          "meta_comentarios": 123,
+          "reacciones": 5,
+          "comentarios": 7,
+          "cumplimiento_reacciones_pct": 4.4
+        },
+        {
+          "_id": "camp_328",
+          "nombre": "Campaña Like",
+          "objetivo": "Promover contenido",
+          "meta_likes": 111,
+          "meta_comentarios": 240,
+          "reacciones": 4,
+          "comentarios": 6,
+          "cumplimiento_reacciones_pct": 3.6
+        },
+        {
+          "_id": "camp_148",
+          "nombre": "Campaña Realize",
+          "objetivo": "Aumentar engagement",
+          "meta_likes": 214,
+          "meta_comentarios": 400,
+          "reacciones": 7,
+          "comentarios": 2,
+          "cumplimiento_reacciones_pct": 3.3
+        }
+      ]
+    },
+    "A8": {
+      "tipo": "aggregate",
+      "coleccion": "campanas",
+      "requisito": "Éxito de campañas por objetivo: cumplimiento promedio de la meta de reacciones.",
+      "consulta": {
+        "pipeline": "[{'$lookup': {'from': 'reacciones', 'localField': 'publicaciones_asociadas', 'foreignField': 'publicacion_id', 'as': 'r'}}, {'$project': {'objetivo': 1, 'meta_likes': '$metricas_objetivo.likes', 'reacciones': {'$size': '$r'}}}, {'$group': {'_id': '$objetivo', 'campanas': {'$sum': 1}, 'reacciones_promedio': {'$avg': '$reacciones'}, 'meta_promedio': {'$avg': '$meta_likes'}}}, {'$project': {'campanas': 1, 'reacciones_promedio': {'$round': ['$reacciones_promedio', 1]}, 'meta_promedio': {'$round': ['$meta_promedio', 1]}}}, {'$sort': {'reacciones_promedio': -1}}]"
+      },
+      "resultados": [
+        {
+          "_id": "Captar nuevos usuarios",
+          "campanas": 161,
+          "reacciones_promedio": 2.9,
+          "meta_promedio": 560.4
+        },
+        {
+          "_id": "Promover contenido",
+          "campanas": 174,
+          "reacciones_promedio": 2.9,
+          "meta_promedio": 553.4
+        },
+        {
+          "_id": "Aumentar engagement",
+          "campanas": 165,
+          "reacciones_promedio": 2.8,
+          "meta_promedio": 554.7
+        }
+      ]
+    }
+  }
+}

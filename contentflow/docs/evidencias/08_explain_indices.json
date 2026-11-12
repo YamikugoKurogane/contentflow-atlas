@@ -1,0 +1,116 @@
+{
+  "generado": "2026-11-11T19:22:46",
+  "datos": {
+    "T1": {
+      "coleccion": "reacciones",
+      "negocio": "Popularidad: reacciones de una publicación",
+      "filtro": "{'publicacion_id': 'pub_430'}",
+      "orden": "None",
+      "indice": "ix_react_pub [('publicacion_id', 1)]",
+      "antes": {
+        "tiempo_ms": 0,
+        "docs_examinados": 499,
+        "claves_examinadas": 0,
+        "retornados": 4,
+        "acceso": "COLLSCAN",
+        "sort_en_memoria": false,
+        "tiempos_ms": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "despues": {
+        "tiempo_ms": 0,
+        "docs_examinados": 4,
+        "claves_examinadas": 4,
+        "retornados": 4,
+        "acceso": "IXSCAN",
+        "sort_en_memoria": false,
+        "tiempos_ms": [
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "T2": {
+      "coleccion": "publicaciones",
+      "negocio": "Diseño de contenido: publicaciones de Tecnología, más recientes primero",
+      "filtro": "{'categoria': 'Tecnología'}",
+      "orden": "{'fecha_publicacion': -1}",
+      "indice": "ix_pub_categoria_fecha [('categoria', 1), ('fecha_publicacion', -1)]",
+      "antes": {
+        "tiempo_ms": 0,
+        "docs_examinados": 500,
+        "claves_examinadas": 0,
+        "retornados": 111,
+        "acceso": "COLLSCAN",
+        "sort_en_memoria": true,
+        "tiempos_ms": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "despues": {
+        "tiempo_ms": 0,
+        "docs_examinados": 111,
+        "claves_examinadas": 111,
+        "retornados": 111,
+        "acceso": "IXSCAN",
+        "sort_en_memoria": false,
+        "tiempos_ms": [
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "T3": {
+      "coleccion": "comentarios",
+      "negocio": "Usuarios activos: comentarios de un usuario",
+      "filtro": "{'usuario_id': 'user_92'}",
+      "orden": "None",
+      "indice": "ix_com_usuario [('usuario_id', 1)]",
+      "antes": {
+        "tiempo_ms": 0,
+        "docs_examinados": 500,
+        "claves_examinadas": 0,
+        "retornados": 4,
+        "acceso": "COLLSCAN",
+        "sort_en_memoria": false,
+        "tiempos_ms": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "despues": {
+        "tiempo_ms": 0,
+        "docs_examinados": 4,
+        "claves_examinadas": 4,
+        "retornados": 4,
+        "acceso": "IXSCAN",
+        "sort_en_memoria": false,
+        "tiempos_ms": [
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  }
+}

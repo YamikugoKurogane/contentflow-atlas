@@ -1,0 +1,112 @@
+{
+  "generado": "2026-11-12T01:13:13",
+  "datos": [
+    {
+      "coleccion": "usuarios",
+      "indice": "ux_correo",
+      "claves": [
+        [
+          "correo",
+          1
+        ]
+      ],
+      "justificacion": "Login/búsqueda por correo, evita duplicados"
+    },
+    {
+      "coleccion": "usuarios",
+      "indice": "ix_pais",
+      "claves": [
+        [
+          "pais",
+          1
+        ]
+      ],
+      "justificacion": "Perfil de audiencia por país"
+    },
+    {
+      "coleccion": "publicaciones",
+      "indice": "ix_pub_usuario",
+      "claves": [
+        [
+          "usuario_id",
+          1
+        ]
+      ],
+      "justificacion": "Publicaciones de un usuario / $lookup"
+    },
+    {
+      "coleccion": "publicaciones",
+      "indice": "ix_pub_categoria_fecha",
+      "claves": [
+        [
+          "categoria",
+          1
+        ],
+        [
+          "fecha_publicacion",
+          -1
+        ]
+      ],
+      "justificacion": "Contenido por categoría y recencia"
+    },
+    {
+      "coleccion": "reacciones",
+      "indice": "ix_react_pub",
+      "claves": [
+        [
+          "publicacion_id",
+          1
+        ]
+      ],
+      "justificacion": "Popularidad por publicación / $lookup"
+    },
+    {
+      "coleccion": "reacciones",
+      "indice": "ux_react_usuario_pub",
+      "claves": [
+        [
+          "usuario_id",
+          1
+        ],
+        [
+          "publicacion_id",
+          1
+        ]
+      ],
+      "justificacion": "Evita reacciones duplicadas (requiere haber corregido el duplicado)"
+    },
+    {
+      "coleccion": "comentarios",
+      "indice": "ix_com_pub",
+      "claves": [
+        [
+          "publicacion_id",
+          1
+        ]
+      ],
+      "justificacion": "Comentarios de una publicación"
+    },
+    {
+      "coleccion": "comentarios",
+      "indice": "ix_com_usuario",
+      "claves": [
+        [
+          "usuario_id",
+          1
+        ]
+      ],
+      "justificacion": "Usuarios más activos"
+    },
+    {
+      "coleccion": "campanas",
+      "indice": "ix_camp_pubs",
+      "claves": [
+        [
+          "publicaciones_asociadas",
+          1
+        ]
+      ],
+      "justificacion": "Multikey: campañas de una publicación"
+    }
+  ]
+}

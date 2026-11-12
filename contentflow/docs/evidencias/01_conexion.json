@@ -1,5 +1,5 @@
 {
-  "generado": "2026-11-11T00:35:41",
+  "generado": "2026-11-12T00:21:58",
   "datos": {
     "ping": "ok",
     "version_servidor": "8.0.37",
@@ -10,8 +10,15 @@
     "read_concern": {
       "level": "majority"
     },
-    "colecciones": [],
-    "almacenamiento_MB": 0.0,
+    "colecciones": [
+      "campanas",
+      "publicaciones",
+      "usuarios",
+      "comentarios",
+      "auditoria_correcciones",
+      "reacciones"
+    ],
+    "almacenamiento_MB": 0.52,
     "limite_M0_MB": 512
   }
 }

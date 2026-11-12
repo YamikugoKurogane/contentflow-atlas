@@ -1,0 +1,220 @@
+{
+  "generado": "2026-11-11T19:22:51",
+  "datos": [
+    {
+      "paso": "C1",
+      "operacion": "insert_one en usuarios: registro de un usuario nuevo",
+      "antes": {
+        "existe": 0
+      },
+      "despues": {
+        "_id": "demo_user_1",
+        "nombre": "Usuario Demo",
+        "pais": "Chile",
+        "dispositivo": "Móvil"
+      },
+      "nota": ""
+    },
+    {
+      "paso": "C2",
+      "operacion": "insert_one en publicaciones: el usuario publica",
+      "antes": {
+        "publicaciones_del_usuario": 0
+      },
+      "despues": {
+        "_id": "demo_pub_1",
+        "contenido": "Lanzamiento de la campaña de otoño",
+        "hashtags": [
+          "#innovacion"
+        ],
+        "tipo": "Texto"
+      },
+      "nota": ""
+    },
+    {
+      "paso": "U1",
+      "operacion": "update_one con $push en campanas: la publicación se asocia a camp_1",
+      "antes": {
+        "asociadas": 5
+      },
+      "despues": {
+        "asociadas": 6,
+        "ultima": "demo_pub_1"
+      },
+      "nota": ""
+    },
+    {
+      "paso": "C3",
+      "operacion": "insert_many en reacciones (validadas contra usuarios y publicaciones)",
+      "antes": {
+        "reacciones_de_la_pub": 0
+      },
+      "despues": {
+        "reacciones_de_la_pub": 2
+      },
+      "nota": ""
+    },
+    {
+      "paso": "C4",
+      "operacion": "insert_one en comentarios",
+      "antes": {
+        "comentarios_de_la_pub": 0
+      },
+      "despues": {
+        "_id": "demo_comm_1",
+        "comentario": "Muy buena iniciativa",
+        "likes": 0
+      },
+      "nota": ""
+    },
+    {
+      "paso": "R1",
+      "operacion": "aggregate: reacciones de la publicación agrupadas por tipo",
+      "antes": "-",
+      "despues": [
+        {
+          "_id": "Me encanta",
+          "total": 1
+        },
+        {
+          "_id": "Me gusta",
+          "total": 1
+        }
+      ],
+      "nota": ""
+    },
+    {
+      "paso": "R2",
+      "operacion": "aggregate con $lookup y $unwind: publicación con los datos de su autor",
+      "antes": "-",
+      "despues": [
+        {
+          "_id": "demo_pub_1",
+          "contenido": "Lanzamiento de la campaña de otoño",
+          "autor": "Usuario Demo",
+          "pais_autor": "Chile"
+        }
+      ],
+      "nota": ""
+    },
+    {
+      "paso": "U2",
+      "operacion": "update_one con $inc y $set en comentarios",
+      "antes": {
+        "comentario": "Muy buena iniciativa",
+        "likes": 0
+      },
+      "despues": {
+        "comentario": "Muy buena iniciativa (editado)",
+        "likes": 5
+      },
+      "nota": ""
+    },
+    {
+      "paso": "U3",
+      "operacion": "update_one con $push y $set en publicaciones",
+      "antes": {
+        "hashtags": [
+          "#innovacion"
+        ],
+        "tipo": "Texto"
+      },
+      "despues": {
+        "hashtags": [
+          "#innovacion",
+          "#otono"
+        ],
+        "tipo": "Video"
+      },
+      "nota": ""
+    },
+    {
+      "paso": "U4",
+      "operacion": "update_many en reacciones: marcar como revisadas",
+      "antes": {
+        "sin_marca": 2
+      },
+      "despues": {
+        "modificadas": 2
+      },
+      "nota": ""
+    },
+    {
+      "paso": "V1",
+      "operacion": "Reacción a una publicación inexistente (referencia inválida)",
+      "antes": "sin cambios",
+      "despues": "RECHAZADA -> referencia inválida: la publicación pub_999999 no existe",
+      "nota": "criterio: no se inserta dato inválido"
+    },
+    {
+      "paso": "V2",
+      "operacion": "Reacción duplicada: mismo usuario y misma publicación",
+      "antes": "sin cambios",
+      "despues": "RECHAZADA -> duplicado: user_1 ya reaccionó a demo_pub_1",
+      "nota": "criterio: no se inserta dato inválido"
+    },
+    {
+      "paso": "V3",
+      "operacion": "Reacción de un usuario inexistente (referencia inválida)",
+      "antes": "sin cambios",
+      "despues": "RECHAZADA -> referencia inválida: el usuario user_999999 no existe",
+      "nota": "criterio: no se inserta dato inválido"
+    },
+    {
+      "paso": "D1",
+      "operacion": "delete_one en comentarios",
+      "antes": {
+        "comentarios_de_la_pub": 1
+      },
+      "despues": {
+        "comentarios_de_la_pub": 0
+      },
+      "nota": ""
+    },
+    {
+      "paso": "D2",
+      "operacion": "delete_many en reacciones de la publicación (evita referencias huérfanas)",
+      "antes": {
+        "reacciones_de_la_pub": 2
+      },
+      "despues": {
+        "eliminadas": 2
+      },
+      "nota": ""
+    },
+    {
+      "paso": "D3",
+      "operacion": "$pull en campanas y delete_one de la publicación y del usuario de prueba",
+      "antes": {
+        "existen": [
+          "publicación",
+          "usuario"
+        ]
+      },
+      "despues": {
+        "publicacion": 0,
+        "usuario": 0,
+        "en_campana": 0
+      },
+      "nota": ""
+    },
+    {
+      "paso": "FIN",
+      "conteos_iniciales": {
+        "usuarios": 500,
+        "publicaciones": 500,
+        "reacciones": 499,
+        "comentarios": 500,
+        "campanas": 500
+      },
+      "conteos_finales": {
+        "usuarios": 500,
+        "publicaciones": 500,
+        "reacciones": 499,
+        "comentarios": 500,
+        "campanas": 500
+      },
+      "base_intacta": true
+    }
+  ]
+}

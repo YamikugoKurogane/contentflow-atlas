@@ -1,0 +1,598 @@
+{
+  "info": {
+    "name": "ContentFlow API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Ejecutar en orden (Collection Runner). Requiere la API en http://127.0.0.1:5000."
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:5000"
+    },
+    {
+      "key": "pub_id",
+      "value": ""
+    },
+    {
+      "key": "react_id",
+      "value": ""
+    },
+    {
+      "key": "comm_id",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "01 Salud y conectividad con Atlas",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "health"
+          ]
+        },
+        "description": ""
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "02 Listar publicaciones (lectura)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/publicaciones?limit=3",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "publicaciones"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "3"
+            }
+          ]
+        },
+        "description": ""
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "03 Crear publicación (escritura)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/publicaciones",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "publicaciones"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuario_id\": \"user_1\",\n  \"contenido\": \"Publicación creada desde Postman\",\n  \"categoria\": \"Tecnología\",\n  \"tipo\": \"Texto\",\n  \"hashtags\": [\n    \"#innovacion\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 201\", function () { pm.response.to.have.status(201); });",
+              "pm.collectionVariables.set(\"pub_id\", pm.response.json()._id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "04 Leer la publicación creada",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/publicaciones/{{pub_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "publicaciones",
+            "{{pub_id}}"
+          ]
+        },
+        "description": ""
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "05 Crear reacción",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/reacciones",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "reacciones"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuario_id\": \"user_1\",\n  \"publicacion_id\": \"{{pub_id}}\",\n  \"tipo_reaccion\": \"Me gusta\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 201\", function () { pm.response.to.have.status(201); });",
+              "pm.collectionVariables.set(\"react_id\", pm.response.json()._id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "06 Reacción duplicada (409)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/reacciones",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "reacciones"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuario_id\": \"user_1\",\n  \"publicacion_id\": \"{{pub_id}}\",\n  \"tipo_reaccion\": \"Me gusta\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 409\", function () { pm.response.to.have.status(409); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "07 Reacción a publicación inexistente (422)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/reacciones",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "reacciones"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuario_id\": \"user_1\",\n  \"publicacion_id\": \"pub_inexistente\",\n  \"tipo_reaccion\": \"Me gusta\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 422\", function () { pm.response.to.have.status(422); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "08 Crear comentario",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/comentarios",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "comentarios"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuario_id\": \"user_2\",\n  \"publicacion_id\": \"{{pub_id}}\",\n  \"comentario\": \"Comentario desde Postman\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 201\", function () { pm.response.to.have.status(201); });",
+              "pm.collectionVariables.set(\"comm_id\", pm.response.json()._id);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "09 Dar like al comentario ($inc)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/comentarios/{{comm_id}}/like",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "comentarios",
+            "{{comm_id}}",
+            "like"
+          ]
+        },
+        "description": ""
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", function () { pm.response.to.have.status(200); });",
+              "pm.test(\"likes = 1\", function () { pm.expect(pm.response.json().likes).to.eql(1); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "10 Editar publicación (PATCH)",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/publicaciones/{{pub_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "publicaciones",
+            "{{pub_id}}"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contenido\": \"Contenido editado desde Postman\",\n  \"hashtags\": [\n    \"#innovacion\",\n    \"#postman\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "11 Publicación inexistente (404)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/publicaciones/pub_inexistente",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "publicaciones",
+            "pub_inexistente"
+          ]
+        },
+        "description": ""
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 404\", function () { pm.response.to.have.status(404); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "12 Publicación sin campos obligatorios (400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/publicaciones",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "publicaciones"
+          ]
+        },
+        "description": "",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"usuario_id\": \"user_1\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 400\", function () { pm.response.to.have.status(400); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "13 Estadística: publicaciones más populares",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/estadisticas/publicaciones-populares?limit=5",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "estadisticas",
+            "publicaciones-populares"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "5"
+            }
+          ]
+        },
+        "description": ""
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "14 Eliminar comentario",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/comentarios/{{comm_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "comentarios",
+            "{{comm_id}}"
+          ]
+        },
+        "description": ""
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "15 Eliminar reacción",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/reacciones/{{react_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "reacciones",
+            "{{react_id}}"
+          ]
+        },
+        "description": ""
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "16 Eliminar publicación",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/publicaciones/{{pub_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "publicaciones",
+            "{{pub_id}}"
+          ]
+        },
+        "description": ""
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
